@@ -1,0 +1,19 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      relative: false
+      force: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/kitty/kitty.conf: kitty/kitty.conf
+    ~/.config/base16-shell: base16-shell
+    ~/.config/fish/conf.d: fish/conf.d
+
+- create:
+    - ~/Downloads
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
