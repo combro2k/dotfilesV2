@@ -8,9 +8,15 @@
 - clean: ['~']
 
 - link:
-    ~/.config/kitty/kitty.conf: kitty/kitty.conf
-    ~/.config/base16-shell: base16-shell
+    ~/.config/awesome: awesome
+    ~/.config/base16-shell: base16/shell
+    ~/.config/base16-shell-hooks: base16/shell-hooks
     ~/.config/fish/conf.d: fish/conf.d
+    ~/.config/kitty/kitty.conf: kitty/kitty.conf
+    ~/.config/kitty/colors: base16/kitty/colors
+    ~/.vim/colors: base16/vim/colors 
+    ~/.local/share/rofi/themes: base16/rofi/themes
+    ~/.vimrc: vim/vimrc
 
 - create:
     - ~/Downloads

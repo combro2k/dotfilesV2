@@ -1,0 +1,109 @@
+" General vim setup
+set shell=/bin/sh " use sh instead of default fish for my config
+set expandtab
+
+set tabstop=2
+set laststatus=2
+set shiftwidth=2
+set term=screen-256color
+
+" enable modelines for easier use might be a risk I know ;-)
+set modeline
+set modelines=5
+set encoding=UTF-8
+
+" Special keys
+map <C-n> :NERDTreeToggle<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+" Airline configuration, fix nerdfont issues etc.
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+call plug#begin('~/.vim/plugged')
+  " We're gonna load it via generated locally at dotfiles
+  " Plug 'danielwe/base16-vim'
+
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+
+  Plug 'scrooloose/nerdtree'
+  Plug 'jistr/vim-nerdtree-tabs'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+  Plug 'maralla/completor.vim'
+
+  " Syntax types
+  Plug 'pearofducks/ansible-vim'
+  " Plug 'govim/govim'
+  Plug 'mikewest/vim-markdown'
+  Plug 'dag/vim-fish'
+
+  Plug 'ryanoasis/vim-devicons'
+
+  Plug '~/.fzf'
+call plug#end()
+
+function! s:tig_status()
+  cd `git rev-parse --show-toplevel % | head -n 1`
+  !tig status
+endfunction
+
+map <C-G> :TigStatus<CR><CR>
+command! TigStatus call s:tig_status()
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+if &shell =~# 'fish$'
+  set shell=sh
+endif
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+filetype plugin indent on
+filetype plugin on
+
+syntax enable
+
+map <esc>OH <home>
+cmap <esc>OH <home>
+imap <esc>OH <home>
+map <esc>OF <end>
+cmap <esc>OF <end>
+imap <esc>OF <end>

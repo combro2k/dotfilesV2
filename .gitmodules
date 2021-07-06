@@ -2,6 +2,9 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 	ignore = dirty
-[submodule "base16-shell"]
-	path = base16-shell
-	url = https://github.com/chriskempson/base16-shell.git
+[submodule "awesome/vicious"]
+	path = awesome/vicious
+	url = https://github.com/vicious-widgets/vicious.git
+[submodule "awesome/lain"]
+	path = awesome/lain
+	url = https://github.com/lcpz/lain.git
