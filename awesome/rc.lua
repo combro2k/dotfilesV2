@@ -620,6 +620,8 @@ autorun = true
 autorunApps = {
   '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1',
   '/usr/bin/gnome-screensaver --no-daemon',
+  '/usr/bin/touchpad-indicator',
+  '/usr/bin/xinput disable "TPPS/2 Elan TrackPoint"',
 }
 
 if lfs.attributes(os.getenv("HOME") .. "/.fehbg").mode == "file" then
