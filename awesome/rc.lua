@@ -64,7 +64,7 @@ terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
-lockscreen = "slock"
+lockscreen = "gnome-screensaver-command --lock"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -619,6 +619,7 @@ awful.spawn.with_shell(
 autorun = true
 autorunApps = {
   '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1',
+  '/usr/bin/gnome-screensaver --no-daemon',
 }
 
 if lfs.attributes(os.getenv("HOME") .. "/.fehbg").mode == "file" then
