@@ -93,9 +93,9 @@ if &shell =~# 'fish$'
   set shell=sh
 endif
 
-if filereadable(expand("~/.vimrc_background"))
+if filereadable(expand("~/.vimrc_theme"))
   let base16colorspace=256
-  source ~/.vimrc_background
+  source ~/.vimrc_theme
 endif
 
 filetype plugin indent on
