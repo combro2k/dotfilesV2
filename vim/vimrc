@@ -93,6 +93,16 @@ filetype plugin on
 
 syntax enable
 
+function! FiletypeHook(config)
+  if has_key(a:config, 'vim_filetype')
+    let &filetype = a:config['vim_filetype']
+  endif
+  return 0   " Return 0 to show no error happened
+endfunction
+
+call editorconfig#AddNewHook(function('FiletypeHook'))
+
+" Fix issues with specific terminals
 map <esc>OH <home>
 cmap <esc>OH <home>
 imap <esc>OH <home>
