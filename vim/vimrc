@@ -54,28 +54,18 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-  " We're gonna load it via generated locally at dotfiles
-  " Plug 'danielwe/base16-vim'
-
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-
   Plug 'scrooloose/nerdtree'
   Plug 'jistr/vim-nerdtree-tabs'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
   Plug 'maralla/completor.vim'
-
-  " Syntax types
   Plug 'pearofducks/ansible-vim'
-  " Plug 'govim/govim'
   Plug 'mikewest/vim-markdown'
   Plug 'dag/vim-fish'
-
   Plug 'ryanoasis/vim-devicons'
-
   Plug 'JamshedVesuna/vim-markdown-preview'
-
+  Plug 'editorconfig/editorconfig-vim'
   Plug '~/.fzf'
 call plug#end()
 
