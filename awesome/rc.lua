@@ -226,23 +226,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
-		volumeicon = wibox.widget.textbox() 
-		wifiicon = wibox.widget.textbox() 
-		vicious.register(
-			volumeicon,
-			vicious.widgets.volume,
-			format("%s $1%%", formatters.colored("♬", beautiful.yellow)),
-			1,
-			"pulse -c 1"
-		)
-		vicious.register(
-      wifiicon,
-      vicious.widgets.wifi,
-      format("${ssid} %s ${linp}%%", formatters.colored("⚡", beautiful.yellow)),
-      5,
-      "wlp0s20f3"
-		)
-   -- Add widgets to the wibox
+    -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
@@ -254,8 +238,6 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            volumeicon,
-            wifiicon,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -419,7 +401,23 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+    awful.key({}, "XF86AudioRaiseVolume",
+      function ()
+        awful.spawn("amixer -q -D pulse set Master 1%+")
+      end,
+      {description = "", group = ""}),
+    awful.key({}, "XF86AudioLowerVolume",
+      function ()
+        awful.spawn("amixer -q -D pulse set Master 1%-")
+      end,
+      {description = "", group = ""}),
+    awful.key({}, "XF86AudioMute",
+      function ()
+        awful.spawn("amixer -q -D pulse set Master toggle")
+      end,
+      {description = "", group = ""})
+
 )
 
 -- Bind all key numbers to tags.
@@ -620,10 +618,11 @@ awful.spawn.with_shell(
 
 autorun = true
 autorunApps = {
+  '/usr/bin/xinput disable "TPPS/2 Elan TrackPoint"',
   '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1',
+  '/usr/bin/pnmixer',
   '/usr/bin/gnome-screensaver --no-daemon',
   '/usr/bin/touchpad-indicator',
-  '/usr/bin/xinput disable "TPPS/2 Elan TrackPoint"',
 }
 
 if lfs.attributes(os.getenv("HOME") .. "/.fehbg").mode == "file" then
