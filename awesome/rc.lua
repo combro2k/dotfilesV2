@@ -27,6 +27,7 @@ local vicious = require("vicious")
 local lfs = require("lfs")
 local format     = string.format
 local formatters = require("util.formatters")
+local quake = require("lain/util/quake")
 
 awful.util.shell = "bash"
 
@@ -198,8 +199,16 @@ awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
+    if s.index == 1 then
+      default_layout = awful.layout.layouts[7]
+      default_bar_position = "bottom"
+    else
+      default_layout = awful.layout.layouts[1]
+      default_bar_position = "top"
+    end
+
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, default_layout)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -226,7 +235,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar({ position = default_bar_position, screen = s })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -245,6 +254,9 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
+
+    -- dropdown
+    s.quake = quake({ app = "kitty",argname = "--title %s",extra = "--class QuakeDD", visible = true, height = 0.85, width = 0.50, horiz = "center", vert = "center" })
 end)
 -- }}}
 
@@ -359,7 +371,11 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+    -- QuakeDD
+    awful.key({}, "F11", function () awful.screen.focused().quake:toggle() end,
+      {description = "dropdown application", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -418,8 +434,12 @@ clientkeys = gears.table.join(
       function ()
         awful.spawn("amixer -q -D pulse set Master toggle")
       end,
+      {description = "", group = ""}),
+    awful.key({}, "XF86Explorer",
+      function ()
+        awful.spawn("xdg-open .")
+      end,
       {description = "", group = ""})
-
 )
 
 -- Bind all key numbers to tags.
@@ -625,6 +645,7 @@ autorunApps = {
   '/usr/bin/pnmixer',
   '/usr/bin/gnome-screensaver --no-daemon',
   '/usr/bin/touchpad-indicator',
+  '/usr/bin/xset -dpms',
 }
 
 if lfs.attributes(os.getenv("HOME") .. "/.fehbg").mode == "file" then
