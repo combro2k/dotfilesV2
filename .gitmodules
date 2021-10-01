@@ -8,3 +8,6 @@
 [submodule "awesome/lain"]
 	path = awesome/lain
 	url = https://github.com/lcpz/lain.git
+[submodule "tmux/tpm"]
+	path = tmux/tpm
+	url = https://github.com/tmux-plugins/tpm

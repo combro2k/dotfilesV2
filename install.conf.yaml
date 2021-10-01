@@ -17,8 +17,10 @@
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.local/share/rofi/themes: base16/rofi/themes
     ~/.vimrc: vim/vimrc
-    ~/.vim/colors: base16/vim/colors 
+    ~/.vim/colors: base16/vim/colors
     ~/.vim/autoload/airline/themes: base16/vim-airline
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/plugins/tpm: tmux/tpm
 
 - create:
     - ~/Downloads
