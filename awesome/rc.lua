@@ -28,6 +28,7 @@ local lfs = require("lfs")
 local format     = string.format
 local formatters = require("util.formatters")
 local quake = require("lain/util/quake")
+local power = require("power_widget")
 
 awful.util.shell = "bash"
 
@@ -39,6 +40,18 @@ if awesome.startup_errors then
                      title = "Oops, there were errors during startup!",
                      text = awesome.startup_errors })
 end
+
+power.critical_percentage = 9
+power.warning_config = {
+  percentage = 21,
+  preset = {
+    shape = gears.shape.rounded_rect,
+    bg = "#FFFF00",
+    fg = "#000000",
+    timeout = 3,
+  },
+  message = "The battery is getting low",
+}
 
 -- Handle runtime errors after startup
 do
@@ -249,6 +262,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+						power,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -424,22 +438,22 @@ clientkeys = gears.table.join(
       function ()
         awful.spawn("amixer -q -D pulse set Master 1%+")
       end,
-      {description = "", group = ""}),
+      {description = "Volume Higher", group = "volume"}),
     awful.key({}, "XF86AudioLowerVolume",
       function ()
         awful.spawn("amixer -q -D pulse set Master 1%-")
       end,
-      {description = "", group = ""}),
+      {description = "Volume Lower", group = "volume"}),
     awful.key({}, "XF86AudioMute",
       function ()
         awful.spawn("amixer -q -D pulse set Master toggle")
       end,
-      {description = "", group = ""}),
+      {description = "Volume Toggle Mute", group = "volume"}),
     awful.key({}, "XF86Explorer",
       function ()
-        awful.spawn("xdg-open .")
+        awful.spawn("nautilus .")
       end,
-      {description = "", group = ""})
+      {description = "File Manager", group = "launcher"})
 )
 
 -- Bind all key numbers to tags.
