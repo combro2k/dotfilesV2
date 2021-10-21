@@ -2,6 +2,12 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 
+-- allow remote control via dbus
+pcall(require, "awful.remote")
+
+-- screenful allows automaticly setup screens via udev
+pcall(require, "screenful")
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -21,14 +27,13 @@ require("awful.hotkeys_popup.keys")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
-local xrandr = require("util/xrandr")
 local autostart = require("util/autostart")
 local vicious = require("vicious")
 local lfs = require("lfs")
 local format     = string.format
 local formatters = require("util.formatters")
 local quake = require("lain/util/quake")
-local power = require("power_widget")
+-- local power = require("power_widget")
 
 awful.util.shell = "bash"
 
@@ -41,17 +46,17 @@ if awesome.startup_errors then
                      text = awesome.startup_errors })
 end
 
-power.critical_percentage = 9
-power.warning_config = {
-  percentage = 21,
-  preset = {
-    shape = gears.shape.rounded_rect,
-    bg = "#FFFF00",
-    fg = "#000000",
-    timeout = 3,
-  },
-  message = "The battery is getting low",
-}
+-- power.critical_percentage = 9
+-- power.warning_config = {
+--   percentage = 21,
+--   preset = {
+--     shape = gears.shape.rounded_rect,
+--     bg = "#FFFF00",
+--     fg = "#000000",
+--     timeout = 3,
+--   },
+--   message = "The battery is getting low",
+-- }
 
 -- Handle runtime errors after startup
 do
@@ -208,17 +213,27 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local function set_size_correct(s)
+  print('Testing 123')
+end
+
+-- Set correct screensize on connect
+screen.connect_signal("added", set_size_correct)
+
 awful.screen.connect_for_each_screen(function(s)
+
     -- Wallpaper
     set_wallpaper(s)
 
     if s.index == 1 then
       default_layout = awful.layout.layouts[7]
-      default_bar_position = "bottom"
+    elseif s.index == 2 and s.outputs["HDMI-1"] then
+      default_layout = awful.layout.layouts[7]
     else
       default_layout = awful.layout.layouts[1]
-      default_bar_position = "top"
     end
+
+    default_bar_position = "bottom"
 
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, default_layout)
@@ -262,7 +277,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-						power,
+--						power,
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
