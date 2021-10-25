@@ -12,7 +12,7 @@ screens = {
 	['default'] = {
 		['connected'] = function (xrandrOutput)
             if xrandrOutput ~= defaultOutput then
-                return '--output ' .. xrandrOutput .. ' --auto --above ' .. defaultOutput
+                return '--output ' .. xrandrOutput .. ' --primary --auto --above ' .. defaultOutput
             end
             return nil
 		end,
@@ -26,7 +26,7 @@ screens = {
 	['393460039'] = { -- HDMI-A-1
 		['connected'] = function (xrandrOutput)
 			if xrandrOutput ~= defaultOutput then
-				return '--output ' .. xrandrOutput .. ' --auto --right-of ' .. defaultOutput
+				return '--output ' .. xrandrOutput .. ' --primary --auto --scale 0.75x0.75 --right-of ' .. defaultOutput
 			end
 			return nil
 		end,
