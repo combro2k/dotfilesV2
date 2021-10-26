@@ -8,6 +8,7 @@
 - clean: ['~']
 
 - link:
+    ~/.bashrc: bash/bashrc
     ~/.config/awesome: awesome
     ~/.config/base16-shell: base16/shell
     ~/.config/base16-shell-hooks: base16/shell-hooks

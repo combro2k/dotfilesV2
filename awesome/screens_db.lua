@@ -9,33 +9,47 @@ outputMapping = {
 }
 
 screens = {
-	['default'] = {
-		['connected'] = function (xrandrOutput)
-            if xrandrOutput ~= defaultOutput then
-                return '--output ' .. xrandrOutput .. ' --primary --auto --above ' .. defaultOutput
-            end
-            return nil
-		end,
-		['disconnected'] = function (xrandrOutput)
-            if xrandrOutput ~= defaultOutput then
-                return '--output ' .. xrandrOutput .. ' --off'
-            end
-            return nil
-		end
-	},
-	['393460039'] = { -- HDMI-A-1
-		['connected'] = function (xrandrOutput)
-			if xrandrOutput ~= defaultOutput then
-				return '--output ' .. xrandrOutput .. ' --primary --auto --scale 0.75x0.75 --right-of ' .. defaultOutput
-			end
-			return nil
-		end,
-		['disconnected'] = function (xrandrOutput)
-			if xrandrOutput ~= defaultOutput then
-			return '--output ' .. xrandrOutput .. ' --off'
-			end
-			return nil
-		end
-	}
+  ['default'] = {
+    ['connected'] = function (xrandrOutput)
+      if xrandrOutput ~= defaultOutput then
+        return '--output ' .. xrandrOutput .. ' --primary --auto --above ' .. defaultOutput
+      end
+      return nil
+    end,
+    ['disconnected'] = function (xrandrOutput)
+      if xrandrOutput ~= defaultOutput then
+        return '--output ' .. xrandrOutput .. ' --off'
+      end
+      return nil
+    end
+  },
+  ['393460039'] = { -- HDMI-A-1
+    ['connected'] = function (xrandrOutput)
+      if xrandrOutput ~= defaultOutput then
+        return '--output ' .. xrandrOutput .. ' --primary --auto --scale 0.75x0.75 --right-of ' .. defaultOutput
+      end
+      return nil
+    end,
+    ['disconnected'] = function (xrandrOutput)
+      if xrandrOutput ~= defaultOutput then
+        return '--output ' .. xrandrOutput .. ' --off'
+      end
+      return nil
+    end
+  }
 }
 
+--	['1617654544849'] = { -- DP-3
+--		['connected'] = function (xrandrOutput)
+--			if xrandrOutput ~= defaultOutput then
+--				return '--output ' .. xrandrOutput .. ' --auto --same-as ' .. defaultOutput
+--			end
+--			return nil
+--		end,
+--		['disconnected'] = function (xrandrOutput)
+--			if xrandrOutput ~= defaultOutput then
+--			return '--output ' .. xrandrOutput .. ' --off --output ' .. defaultOutput .. ' --auto'
+--			end
+--			return nil
+--		end
+--	}
