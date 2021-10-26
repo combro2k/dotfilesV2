@@ -33,6 +33,8 @@ local lfs = require("lfs")
 local format     = string.format
 local formatters = require("util.formatters")
 local quake = require("lain/util/quake")
+local centerwork = require("lain/layout/centerwork")
+
 -- local power = require("power_widget")
 
 awful.util.shell = "bash"
@@ -94,24 +96,15 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.tile.left,
+    centerwork,
+    awful.layout.suit.max,
     awful.layout.suit.tile,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.right,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
-    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.fair,
-    awful.layout.suit.max,
     awful.layout.suit.floating,
-
---  unused layouts
---    awful.layout.suit.spiral,
---    awful.layout.suit.fair.horizontal,
---    awful.layout.suit.max.fullscreen,
---    awful.layout.suit.magnifier,
---    awful.layout.suit.corner.nw,
---    awful.layout.suit.corner.ne,
---    awful.layout.suit.corner.sw,
---    awful.layout.suit.corner.se,
 }
 -- }}}
 
@@ -221,19 +214,17 @@ end
 screen.connect_signal("added", set_size_correct)
 
 awful.screen.connect_for_each_screen(function(s)
-
     -- Wallpaper
     set_wallpaper(s)
 
-    if s.index == 1 then
-      default_layout = awful.layout.layouts[7]
-    elseif s.index == 2 and s.outputs["HDMI-1"] then
-      default_layout = awful.layout.layouts[7]
-    else
-      default_layout = awful.layout.layouts[1]
-    end
+    -- default position for bar
+    default_bar_position = "top"
 
-    default_bar_position = "bottom"
+    if s.outputs["eDP-1"] or s.outputs["HDMI-1"] then
+      default_layout = awful.layout.suit.max
+    else
+      default_layout = centerwork
+    end
 
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, default_layout)
