@@ -276,7 +276,7 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- dropdown
-    s.quake = quake({ app = "kitty", argname = "--title %s", extra = "--class QuakeDD -e tmux", visible = false, height = 0.85, width = 0.50, horiz = "center", vert = "center", followtag = true })
+    s.quake = quake({ app = "kitty", argname = "--title %s", extra = "--class QuakeDD -e quake_tmux.sh", visible = false, height = 0.85, width = 0.50, horiz = "center", vert = "center", followtag = true })
 end)
 -- }}}
 

@@ -9,6 +9,7 @@
 
 - link:
     ~/.bashrc: bash/bashrc
+    ~/.local/bin/quake_tmux.sh: bin/quake_tmux.sh
     ~/.config/awesome: awesome
     ~/.config/base16-shell: base16/shell
     ~/.config/base16-shell-hooks: base16/shell-hooks
