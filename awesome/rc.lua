@@ -222,8 +222,14 @@ awful.screen.connect_for_each_screen(function(s)
 
     if s.outputs["eDP-1"] or s.outputs["HDMI-1"] then
       default_layout = awful.layout.suit.max
+
+      -- dropdown
+      s.quake = quake({ app = "kitty", argname = "--title %s", extra = "--class QuakeDD -e quake_tmux.sh", visible = false, height = 0.96, width = 0.95, horiz = "center", vert = "center", followtag = true })
     else
       default_layout = centerwork
+
+      -- dropdown
+      s.quake = quake({ app = "kitty", argname = "--title %s", extra = "--class QuakeDD -e quake_tmux.sh", visible = false, height = 0.97, width = 0.49, horiz = "center", vert = "center", followtag = true })
     end
 
     -- Each screen has its own tag table.
@@ -274,9 +280,6 @@ awful.screen.connect_for_each_screen(function(s)
             s.mylayoutbox,
         },
     }
-
-    -- dropdown
-    s.quake = quake({ app = "kitty", argname = "--title %s", extra = "--class QuakeDD -e quake_tmux.sh", visible = false, height = 0.85, width = 0.50, horiz = "center", vert = "center", followtag = true })
 end)
 -- }}}
 
@@ -556,14 +559,18 @@ awful.rules.rules = {
         class = {
           "Arandr",
           "Blueman-manager",
+          "Gnome-calculator",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
+          "Rocket.Chat",
           "Sxiv",
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
-          "xtightvncviewer"},
+          "xtightvncviewer",
+          "Org.gnome.Nautilus",
+        },
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
         -- and the name shown there might not match defined rules here.
