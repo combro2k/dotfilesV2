@@ -52,6 +52,9 @@ applications:
         mode: rewrite
         hook: ""
         files:
+          default:
+            path: ~/.base16_theme
+            mode: rewrite
     tmux:
         enabled: true
         mode: rewrite
