@@ -7,6 +7,10 @@
 
 - clean: ['~']
 
+- create:
+    - ~/Downloads
+    - ~/.vim/colors
+
 - link:
     ~/.bashrc: bash/bashrc
     ~/.local/bin/quake_tmux.sh: bin/quake_tmux.sh
@@ -20,8 +24,26 @@
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/plugins/tpm: tmux/tpm
 
-- create:
-    - ~/Downloads
+- asdf:
+    - plugin: python
+    - plugin: php
+    - plugin: rust
+    - plugin: golang
+      global: latest
+      versions:
+        - latest
+    - plugin: devspace
+      global: latest
+      versions:
+        - latest
+    - plugin: tmux
+      global: latest
+      versions:
+        - latest
+    - plugin: vim
+      global: latest
+      versions:
+        - latest
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
