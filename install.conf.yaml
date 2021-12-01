@@ -18,6 +18,7 @@
     ~/.config/base16-universal-manager/config.yaml: base16-universal-manager/config.yaml
     ~/.config/fish/completions/base16-universal-manager.fish: fish/completions/base16-universal-manager.fish
     ~/.config/fish/conf.d: fish/conf.d
+    ~/.config/rofi/config.rasi: rofi/config.rasi
     ~/.config/kitty/kitty.conf: kitty/kitty.conf
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.vimrc: vim/vimrc
@@ -29,21 +30,10 @@
     - plugin: php
     - plugin: rust
     - plugin: golang
-      global: latest
-      versions:
-        - latest
     - plugin: devspace
-      global: latest
-      versions:
-        - latest
     - plugin: tmux
-      global: latest
-      versions:
-        - latest
     - plugin: vim
-      global: latest
-      versions:
-        - latest
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  - [test -x ~/bin/base16-universal-manager && ~/bin/base16-universal-manager, Executing Base16 universal manager]

@@ -2,7 +2,7 @@
 # Get a token at https://github.com/settings/tokens/new to improve rate limit
 GithubToken: ""
 # Select a colorscheme you want to use
-Colorscheme: "google-dark"
+Colorscheme: "solarized-dark"
 
 # Scheme and template list URLs default to the following but can be overridden if you wish
 SchemesMasterURL: "https://raw.githubusercontent.com/chriskempson/base16-schemes-source/master/list.yaml"
@@ -27,16 +27,17 @@ applications:
         mode: rewrite
         hook: ""
         files:
-    jetbrains:
-        enabled: true
-        mode: rewrite
-        hook: ""
-        files:
+          default:
+            path: ~/.config/gtk-2.0/gtkfilechooser.ini
+            mode: rewrite
     kitty:
         enabled: true
         mode: rewrite
         hook: ""
         files:
+          default:
+            path: ~/.config/kitty/theme.conf
+            mode: rewrite
     qutebrowser:
         enabled: true
         mode: rewrite
@@ -47,6 +48,9 @@ applications:
         mode: rewrite
         hook: ""
         files:
+          default:
+            path: ~/.config/rofi/base16-theme.rasi
+            mode: rewrite
     shell:
         enabled: true
         mode: rewrite
@@ -60,6 +64,9 @@ applications:
         mode: rewrite
         hook: ""
         files:
+          default:
+            mode: rewrite
+            path: ~/.tmux.conf.theme
     vim:
         enabled: true
         mode: rewrite
@@ -78,3 +85,6 @@ applications:
         mode: rewrite
         hook: ""
         files:
+          default:
+            path: ~/.Xresources
+            mode: rewrite
