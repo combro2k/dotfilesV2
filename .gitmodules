@@ -1,6 +1,10 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+  ignore = dirty
+[submodule ".dotbot-plugins/dotbot-asdf"]
+	path = .dotbot-plugins/dotbot-asdf
+	url = https://github.com/sobolevn/dotbot-asdf
 	ignore = dirty
 [submodule "awesome/vicious"]
 	path = awesome/vicious
