@@ -28,11 +28,12 @@
 - asdf:
     - plugin: python
     - plugin: php
-    - plugin: rust
     - plugin: golang
     - plugin: devspace
     - plugin: tmux
     - plugin: vim
+    - plugin: glab
+    - plugin: github-cli
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
