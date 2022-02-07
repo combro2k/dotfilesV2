@@ -17,6 +17,7 @@
     ~/.config/awesome: awesome
     ~/.config/base16-universal-manager/config.yaml: base16-universal-manager/config.yaml
     ~/.config/fish/completions/base16-universal-manager.fish: fish/completions/base16-universal-manager.fish
+    ~/.config/fish/completions/glab.fish: fish/completions/glab.fish
     ~/.config/fish/conf.d: fish/conf.d
     ~/.config/rofi/config.rasi: rofi/config.rasi
     ~/.config/kitty/kitty.conf: kitty/kitty.conf
@@ -29,11 +30,19 @@
     - plugin: python
     - plugin: php
     - plugin: golang
+      global: latest
+      versions: [latest]
     - plugin: devspace
     - plugin: tmux
     - plugin: vim
+      global: latest
+      versions: [latest]
     - plugin: glab
+      global: latest
+      versions: [latest]
     - plugin: github-cli
+      global: 2.5.0
+      versions: [2.5.0]
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

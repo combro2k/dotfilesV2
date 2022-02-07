@@ -120,8 +120,8 @@ fi
 # ASDF
 [ -s "$HOME/.asdf" ] && \. "$HOME/.asdf/asdf.sh" # This loads asdf wrapper
 
+# Glab completion
+eval "$(glab completion -s bash)"
+
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-        eval "$("$BASE16_SHELL/profile_helper.sh")"
+[ -f ~/.base16_theme ] && eval sh "$(realpath ~/.base16_theme)"
