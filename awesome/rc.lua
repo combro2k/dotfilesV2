@@ -206,13 +206,6 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
-local function set_size_correct(s)
-  print('Testing 123')
-end
-
--- Set correct screensize on connect
-screen.connect_signal("added", set_size_correct)
-
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -220,7 +213,7 @@ awful.screen.connect_for_each_screen(function(s)
     -- default position for bar
     default_bar_position = "top"
 
-    if s.outputs["eDP-1"] or s.outputs["HDMI-1"] then
+    if s.outputs["eDP1"] or s.outputs["HDMI-1"] or s.outputs["DP3-3"] then
       default_layout = awful.layout.suit.max
 
       -- dropdown
