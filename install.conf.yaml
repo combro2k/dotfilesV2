@@ -13,8 +13,9 @@
 
 - link:
     ~/.bashrc: bash/bashrc
-    ~/.local/bin/quake_tmux.sh: bin/quake_tmux.sh
     ~/.local/bin/git-cleanup.sh: bin/git-cleanup.sh
+    ~/.local/bin/quake_tmux.sh: bin/quake_tmux.sh
+    ~/.local/bin/rfkill-toggle.sh: bin/rfkill-toggle.sh
     ~/.config/awesome: awesome
     ~/.config/base16-universal-manager/config.yaml: base16-universal-manager/config.yaml
     ~/.config/fish/completions/base16-universal-manager.fish: fish/completions/base16-universal-manager.fish
