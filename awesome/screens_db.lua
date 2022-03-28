@@ -53,3 +53,17 @@ end,
 end
   }
 }
+--	['2000000'] = { -- /sys/class/drm/card0/card0-eDP-1
+--		['connected'] = function (xrandrOutput)
+--			if xrandrOutput ~= defaultOutput then
+--				return '--output ' .. xrandrOutput .. ' --auto --same-as ' .. defaultOutput
+--			end
+--			return nil
+--		end,
+--		['disconnected'] = function (xrandrOutput)
+--			if xrandrOutput ~= defaultOutput then
+--			return '--output ' .. xrandrOutput .. ' --off --output ' .. defaultOutput .. ' --auto'
+--			end
+--			return nil
+--		end
+--	}

@@ -35,6 +35,18 @@ local formatters = require("util.formatters")
 local quake = require("lain/util/quake")
 local centerwork = require("lain/layout/centerwork")
 
+-- Toggle titlebar on or off depending on s. Creates titlebar if it doesn't exist
+local function setTitlebar(client, s)
+    if s then
+        if client.titlebar == nil then
+            client:emit_signal("request::titlebars", "rules", {})
+        end
+        awful.titlebar.show(client)
+    else
+        awful.titlebar.hide(client)
+    end
+end
+
 -- local power = require("power_widget")
 
 awful.util.shell = "bash"
@@ -650,6 +662,11 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+
+client.connect_signal("property::floating", function(c)
+  setTitlebar(c, c.floating or c.first_tag and c.first_tag.layout.name == "floating")
+end)
+
 -- }}}
 
 awful.spawn.with_shell(
