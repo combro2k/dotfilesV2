@@ -231,7 +231,7 @@ awful.screen.connect_for_each_screen(function(s)
       -- dropdown
       s.quake = quake({ app = "kitty", argname = "--title %s", extra = "--class QuakeDD -e quake_tmux.sh", visible = false, height = 0.96, width = 0.95, horiz = "center", vert = "center", followtag = true })
     else
-      default_layout = centerwork
+      default_layout = awful.layout.suit.tile
 
       -- dropdown
       s.quake = quake({ app = "kitty", argname = "--title %s", extra = "--class QuakeDD -e quake_tmux.sh", visible = false, height = 0.97, width = 0.49, horiz = "center", vert = "center", followtag = true })
@@ -403,7 +403,7 @@ globalkeys = gears.table.join(
 
     -- QuakeDD
     awful.key({}, "F11", function () awful.screen.focused().quake:toggle() end,
-      {description = "dropdown application", group = "launcher"})
+              {description = "dropdown application", group = "launcher"})
 )
 
 clientkeys = gears.table.join(

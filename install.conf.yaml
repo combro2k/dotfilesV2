@@ -30,7 +30,6 @@
 
 - asdf:
     - plugin: python
-    - plugin: php
     - plugin: golang
       global: latest
       versions: [latest]

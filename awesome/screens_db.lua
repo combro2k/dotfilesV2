@@ -5,7 +5,8 @@ local defaultOutput = 'eDP1'
 outputMapping = {
   ['HDMI-A-1'] = 'HDMI-1',
   ['eDP1'] = 'eDP1',
-  ['eDP2'] = 'eDP2',
+  ['DP2'] = 'DP2',
+  ['DP-3'] = 'DP3',
   ['DP-8'] = 'DP3-3',
 }
 
@@ -53,17 +54,3 @@ end,
 end
   }
 }
---	['2000000'] = { -- /sys/class/drm/card0/card0-eDP-1
---		['connected'] = function (xrandrOutput)
---			if xrandrOutput ~= defaultOutput then
---				return '--output ' .. xrandrOutput .. ' --auto --same-as ' .. defaultOutput
---			end
---			return nil
---		end,
---		['disconnected'] = function (xrandrOutput)
---			if xrandrOutput ~= defaultOutput then
---			return '--output ' .. xrandrOutput .. ' --off --output ' .. defaultOutput .. ' --auto'
---			end
---			return nil
---		end
---	}
