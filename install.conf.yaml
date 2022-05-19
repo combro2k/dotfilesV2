@@ -20,6 +20,7 @@
     ~/.config/base16-universal-manager/config.yaml: base16-universal-manager/config.yaml
     ~/.config/fish/completions/base16-universal-manager.fish: fish/completions/base16-universal-manager.fish
     ~/.config/fish/completions/glab.fish: fish/completions/glab.fish
+    ~/.config/fish/completions/op.fish: fish/completions/op.fish
     ~/.config/fish/conf.d: fish/conf.d
     ~/.config/rofi/config.rasi: rofi/config.rasi
     ~/.config/kitty/kitty.conf: kitty/kitty.conf
