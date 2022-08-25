@@ -66,6 +66,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'JamshedVesuna/vim-markdown-preview'
   Plug 'editorconfig/editorconfig-vim'
+  Plug 'tpope/vim-fugitive'
   Plug '~/.fzf'
 call plug#end()
 

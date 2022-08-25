@@ -364,6 +364,8 @@ globalkeys = gears.table.join(
               {description = "decrease the number of columns", group = "layout"}),
     awful.key({ modkey }, "space",            function () awful.spawn("rofi -show drun -modi drun") end,
               {description = "application chooser", group = "launcher"}),
+    awful.key({ modkey }, "e",                function () awful.spawn("nautilus") end,
+              {description = "Filemanager", group = "launcher"}),
     awful.key({ "Mod1"  }, "Tab",                 function () awful.spawn("rofi -show windowcd -modi windowcd") end,
               {description = "switch windows", group = ""}),
 --   awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,

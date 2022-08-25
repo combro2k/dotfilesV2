@@ -28,6 +28,7 @@
     ~/.vimrc: vim/vimrc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/plugins/tpm: tmux/tpm
+    ~/.local/share/applications/thunderbird.desktop: x11/thunderbird.desktop
 
 - asdf:
     - plugin: python
