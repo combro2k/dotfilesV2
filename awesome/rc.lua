@@ -27,13 +27,14 @@ require("awful.hotkeys_popup.keys")
 -- Load Debian menu entries
 local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
-local autostart = require("util/autostart")
+local autostart = require("util.autostart")
 local vicious = require("vicious")
 local lfs = require("lfs")
 local format     = string.format
 local formatters = require("util.formatters")
-local quake = require("lain/util/quake")
-local centerwork = require("lain/layout/centerwork")
+local quake = require("lain.util.quake")
+local centerwork = require("lain.layout.centerwork")
+local spotify_widget = require("util.spotify")
 
 -- Toggle titlebar on or off depending on s. Creates titlebar if it doesn't exist
 local function setTitlebar(client, s)
@@ -161,7 +162,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%a %b %d, %H:%M",10)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -279,9 +280,25 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
---						power,
+            {
+                {
+                    spotify_widget,
+                    left = 20,
+                    right = 20,
+                    top = 3,
+                    bottom = 3,
+                    widget = wibox.container.margin,
+                },
+                bg = '#ffffff',
+                fg = '#000000',
+                widget = wibox.container.background,
+                shape = gears.shape.powerline,
+            },
+            wibox.widget.separator({orientation = 'vertical', forced_width = 20, opacity = 0}),
             wibox.widget.systray(),
+            wibox.widget.separator({orientation = 'vertical', forced_width = 20, opacity = 0}),
             mytextclock,
+            wibox.widget.separator({orientation = 'vertical', forced_width = 20, opacity = 0}),
             s.mylayoutbox,
         },
     }
@@ -465,11 +482,27 @@ clientkeys = gears.table.join(
         awful.spawn("amixer -q -D pulse set Master toggle")
       end,
       {description = "Volume Toggle Mute", group = "volume"}),
+    awful.key({}, "XF86AudioPlay",
+      function ()
+        awful.spawn(".local/bin/spotifycli --playpause")
+      end,
+      {description = "Media Play/Pause", group = "media"}),
+    awful.key({}, "XF86AudioPrev",
+      function ()
+        awful.spawn(".local/bin/spotifycli --prev")
+      end,
+      {description = "Media Next", group = "media"}),
+    awful.key({}, "XF86AudioNext",
+      function ()
+        awful.spawn(".local/bin/spotifycli --next")
+      end,
+      {description = "Media Next", group = "media"}),
     awful.key({}, "XF86Explorer",
       function ()
         awful.spawn("nautilus .")
       end,
       {description = "File Manager", group = "launcher"})
+
 )
 
 -- Bind all key numbers to tags.
