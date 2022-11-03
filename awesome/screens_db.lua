@@ -166,3 +166,31 @@ end
 --			return nil
 --		end
 --	}
+--	['1607657684826'] = { -- DP3
+--		['connected'] = function (xrandrOutput)
+--			if xrandrOutput ~= defaultOutput then
+--				return '--output ' .. xrandrOutput .. ' --auto --same-as ' .. defaultOutput
+--			end
+--			return nil
+--		end,
+--		['disconnected'] = function (xrandrOutput)
+--			if xrandrOutput ~= defaultOutput then
+--			return '--output ' .. xrandrOutput .. ' --off --output ' .. defaultOutput .. ' --auto'
+--			end
+--			return nil
+--		end
+--	}
+--	['1185355494819'] = { -- DP3
+--		['connected'] = function (xrandrOutput)
+--			if xrandrOutput ~= defaultOutput then
+--				return '--output ' .. xrandrOutput .. ' --auto --same-as ' .. defaultOutput
+--			end
+--			return nil
+--		end,
+--		['disconnected'] = function (xrandrOutput)
+--			if xrandrOutput ~= defaultOutput then
+--			return '--output ' .. xrandrOutput .. ' --off --output ' .. defaultOutput .. ' --auto'
+--			end
+--			return nil
+--		end
+--	}

@@ -1,6 +1,6 @@
 ---
 # Get a token at https://github.com/settings/tokens/new to improve rate limit
-GithubToken: ""
+GithubToken: ~
 # Select a colorscheme you want to use
 Colorscheme: "solarized-dark"
 
@@ -22,13 +22,16 @@ applications:
         mode: rewrite
         hook: ""
         files:
-    gtk2:
+    gtk-flatcolor:
         enabled: true
         mode: rewrite
         hook: ""
         files:
-          default:
-            path: ~/.config/gtk-2.0/gtkfilechooser.ini
+          gtk-2:
+            path: ~/.gtkrc-2.0
+            mode: rewrite
+          gtk-3:
+            path: ~/.config/gtk-3.0/gtk.css
             mode: rewrite
     kitty:
         enabled: true
@@ -59,6 +62,13 @@ applications:
           default:
             path: ~/.base16_theme
             mode: rewrite
+    sway:
+        enabled: true
+        hook: swaymsg reload
+        files:
+          colors:
+            path: ~/.config/sway/theme.conf
+            mode: rewrite
     tmux:
         enabled: true
         mode: rewrite
@@ -80,6 +90,22 @@ applications:
         mode: rewrite
         hook: ""
         files:
+    waybar:
+        enable: true
+        mode: rewrite
+        hook: ""
+        files:
+          default:
+            path: ~/.config/waybar/style.css
+            mode: rewrite
+    wofi:
+        enabled: true
+        mode: rewrite
+        hook: ""
+        files:
+          default:
+            path: ~/.config/wofi/style.css
+            mode: rewrite
     xresources:
         enabled: true
         mode: rewrite
