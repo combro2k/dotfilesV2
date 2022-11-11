@@ -12,105 +12,105 @@ TemplatesMasterURL: "https://raw.githubusercontent.com/chriskempson/base16-templ
 DryRun: false
 # Set the applications templates you want to render to true
 applications:
-    dunst:
-        enabled: true
+  dunst:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+  fzf:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+  gtk-flatcolor:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+      gtk-2:
+        path: ~/.gtkrc-2.0
         mode: rewrite
-        hook: ""
-        files:
-    fzf:
-        enabled: true
+      gtk-3:
+        path: ~/.config/gtk-3.0/gtk.css
         mode: rewrite
-        hook: ""
-        files:
-    gtk-flatcolor:
-        enabled: true
+  kitty:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+      default:
+        path: ~/.config/kitty/theme.conf
         mode: rewrite
-        hook: ""
-        files:
-          gtk-2:
-            path: ~/.gtkrc-2.0
-            mode: rewrite
-          gtk-3:
-            path: ~/.config/gtk-3.0/gtk.css
-            mode: rewrite
-    kitty:
-        enabled: true
+  qutebrowser:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+  rofi:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+      default:
+        path: ~/.config/rofi/base16-theme.rasi
         mode: rewrite
-        hook: ""
-        files:
-          default:
-            path: ~/.config/kitty/theme.conf
-            mode: rewrite
-    qutebrowser:
-        enabled: true
+  shell:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+      default:
+        path: ~/.base16_theme
         mode: rewrite
-        hook: ""
-        files:
-    rofi:
-        enabled: true
+  sway:
+    enabled: true
+    hook: swaymsg reload
+    files:
+      colors:
+        path: ~/.config/sway/theme.conf
         mode: rewrite
-        hook: ""
-        files:
-          default:
-            path: ~/.config/rofi/base16-theme.rasi
-            mode: rewrite
-    shell:
-        enabled: true
+  tmux:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+      default:
         mode: rewrite
-        hook: ""
-        files:
-          default:
-            path: ~/.base16_theme
-            mode: rewrite
-    sway:
-        enabled: true
-        hook: swaymsg reload
-        files:
-          colors:
-            path: ~/.config/sway/theme.conf
-            mode: rewrite
-    tmux:
-        enabled: true
+        path: ~/.tmux.conf.theme
+  vim:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+      default:
+        path: ~/.vim/colors/base16.vim
         mode: rewrite
-        hook: ""
-        files:
-          default:
-            mode: rewrite
-            path: ~/.tmux.conf.theme
-    vim:
-        enabled: true
+  vscode:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+  waybar:
+    enable: true
+    mode: rewrite
+    hook: ""
+    files:
+      default:
+        path: ~/.config/waybar/style.css
         mode: rewrite
-        hook: ""
-        files:
-          default:
-            path: ~/.vim/colors/base16.vim
-            mode: rewrite
-    vscode:
-        enabled: true
+  wofi:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+      default:
+        path: ~/.config/wofi/style.css
         mode: rewrite
-        hook: ""
-        files:
-    waybar:
-        enable: true
+  xresources:
+    enabled: true
+    mode: rewrite
+    hook: ""
+    files:
+      default:
+        path: ~/.Xresources
         mode: rewrite
-        hook: ""
-        files:
-          default:
-            path: ~/.config/waybar/style.css
-            mode: rewrite
-    wofi:
-        enabled: true
-        mode: rewrite
-        hook: ""
-        files:
-          default:
-            path: ~/.config/wofi/style.css
-            mode: rewrite
-    xresources:
-        enabled: true
-        mode: rewrite
-        hook: ""
-        files:
-          default:
-            path: ~/.Xresources
-            mode: rewrite
