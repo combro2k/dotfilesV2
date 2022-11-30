@@ -161,13 +161,12 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
     bindsym --locked XF86AudioPlay exec .local/bin/spotifycli --playpause
     bindsym --locked XF86AudioPrev exec .local/bin/spotifycli --prev
     bindsym --locked XF86AudioNext exec .local/bin/spotifycli --next
-
     bindsym XF86Explorer exec nautilus .
+
     bindsym $mod+e exec nautilus .
-
-    bindsym $mod+space exec wofi --show drun --modi drun
-
+    bindsym $mod+space exec wofi --term $term --show drun --modi drun --allow-images
     bindsym $mod+l exec swaylock -f --color 000000 --layout-text-color ffffff --text-color ffffff
+    bindsym alt+tab exec bin/swayr switch-to
 
 #
 # Scratchpad:
@@ -187,21 +186,36 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
       move scratchpad
       scratchpad show
     }
-    bindsym --locked XF86Tools exec swaymsg [class="Spotify"] scratchpad show || spotify
+    bindsym --locked XF86Tools exec swaymsg '[class="Spotify"]' scratchpad show || spotify
 
-    # QuakeDD
-    for_window [app_id="QuakeDD"] {
+    # 1password
+    for_window [class="1Password"] {
       move scratchpad
       scratchpad show
     }
-    bindsym F12 exec swaymsg [app_id="QuakeDD"] scratchpad show || $term --class "QuakeDD" --detach -e ".local/bin/quake_tmux.sh"
+    bindsym F9 exec swaymsg '[class="1Password"]' scratchpad show || /snap/bin/1password
+
+    # authy
+    for_window [class="Authy Desktop"] {
+      move scratchpad
+      scratchpad show
+    }
+    bindsym F10 exec swaymsg '[class="Authy Desktop"]' scratchpad show || /snap/bin/authy
 
     # rocket chat
     for_window [class="Rocket.Chat"] {
       move scratchpad
       scratchpad show
     }
-    bindsym F11 exec swaymsg [class="Rocket.Chat"] scratchpad show || exec /opt/Rocket.Chat/rocketchat-desktop
+    bindsym F11 exec swaymsg '[class="Rocket.Chat"]' scratchpad show || /opt/Rocket.Chat/rocketchat-desktop
+
+    # QuakeDD
+    for_window [app_id="QuakeDD"] {
+      move scratchpad
+      scratchpad show
+    }
+    bindsym F12 exec swaymsg '[app_id="QuakeDD"]' scratchpad show || $term --class "QuakeDD" --detach -e ".local/bin/quake_tmux.sh"
+
 
 #
 # Resizing containers:
@@ -234,16 +248,21 @@ output "*" bg ~/.wallpaper fill
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-  id bar-0
-  swaybar_command waybar
-}
-# "waybar --bar 0 --style ~/.config/waybar/style.css"
+#bar {
+#  id bar-0
+#  swaybar_command waybar
+#}
+
+#
+# Start Systemd session target
+# https://github.com/swaywm/sway/wiki/Systemd-integration
+#
+exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl --user start sway-session.target"
 
 #
 # Autostart
 #
-exec /usr/bin/dex -a -s /etc/xdg/autostart/:~/.config/autostart/ --environment sway 
+exec /usr/bin/dex -a -s /etc/xdg/autostart/:~/.config/autostart/ --environment sway
 
 include /etc/sway/config.d/*
 

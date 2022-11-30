@@ -1,0 +1,13 @@
+[Unit]
+# Need https://git.sr.ht/~whynothugo/systemd-lock-handler
+Description=Screen locker for Wayland
+PartOf=lock.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/swaylock --color 000000 --layout-text-color ffffff --text-color ffffff
+ExecStopPost=/usr/bin/loginctl unlock-session
+Restart=on-failure
+
+[Install]
+WantedBy=lock.target

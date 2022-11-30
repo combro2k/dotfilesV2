@@ -14,18 +14,18 @@ DryRun: false
 applications:
   dunst:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
+      default:
+        path: ~/.config/dunst/dunstrc
+        mode: rewrite
   fzf:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
+      default:
+        path: ~/.fzf-base16.sh
+        mode: rewrite
   gtk-flatcolor:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
       gtk-2:
         path: ~/.gtkrc-2.0
@@ -35,29 +35,24 @@ applications:
         mode: rewrite
   kitty:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
       default:
         path: ~/.config/kitty/theme.conf
         mode: rewrite
   qutebrowser:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
+      default:
+        path: ~/.config/qutebrowser/theme.py
+        mode: rewrite
   rofi:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
       default:
         path: ~/.config/rofi/base16-theme.rasi
         mode: rewrite
   shell:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
       default:
         path: ~/.base16_theme
@@ -71,45 +66,42 @@ applications:
         mode: rewrite
   tmux:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
       default:
         mode: rewrite
         path: ~/.tmux.conf.theme
   vim:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
       default:
         path: ~/.vim/colors/base16.vim
         mode: rewrite
   vscode:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
+      default:
+        path: ~/.vscode-oss/theme.json
+        mode: rewrite
   waybar:
     enable: true
-    mode: rewrite
-    hook: ""
     files:
       default:
         path: ~/.config/waybar/style.css
         mode: rewrite
+  i3status-rust:
+    enabled: true
+    files:
+      default:
+        path: ~/.config/i3status-rust/theme.toml
+        mode: rewrite
   wofi:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
       default:
         path: ~/.config/wofi/style.css
         mode: rewrite
   xresources:
     enabled: true
-    mode: rewrite
-    hook: ""
     files:
       default:
         path: ~/.Xresources

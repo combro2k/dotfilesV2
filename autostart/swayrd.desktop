@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/home/martijnvm/bin/swayrd
+Hidden=false
+NoDisplay=false
+Name=Swayrd Autostart
