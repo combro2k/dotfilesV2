@@ -10,6 +10,9 @@ if status --is-interactive
   # Use FZF new keybindings
   set -x FZF_LEGACY_KEYBINDINGS 0
 
+  # Different colors for the theme
+  set -g theme_color_scheme base16-dark
+
   # list plugin dependencies
   fundle plugin 'jorgebucaran/fish-getopts'
 
@@ -27,6 +30,9 @@ if status --is-interactive
   fundle plugin 'combro2k/fish-sift'
 
   fundle plugin 'edc/bass'
+
+  # Theme
+  fundle plugin 'oh-my-fish/theme-bobthefish'
 
   fundle init
 end
