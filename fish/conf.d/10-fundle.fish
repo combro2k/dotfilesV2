@@ -12,18 +12,21 @@ if status --is-interactive
 
   # list plugin dependencies
   fundle plugin 'jorgebucaran/fish-getopts'
+
   fundle plugin 'decors/fish-colored-man'
-  fundle plugin 'tuvistavie/fish-completion-helpers'
-  fundle plugin 'tuvistavie/oh-my-fish-core'
-  fundle plugin 'tuvistavie/fish-completion-helpers'
-  fundle plugin 'tuvistavie/fish-asdf'
-  fundle plugin 'oh-my-fish/plugin-vcs'
+
+  fundle plugin 'danhper/oh-my-fish-core'
   fundle plugin 'oh-my-fish/plugin-bang-bang'
   fundle plugin 'oh-my-fish/plugin-license'
   fundle plugin 'oh-my-fish/plugin-sudope'
+
+  fundle plugin 'tuvistavie/fish-completion-helpers'
+  fundle plugin 'tuvistavie/fish-asdf'
+
   fundle plugin 'combro2k/fish-fzf'
+  fundle plugin 'combro2k/fish-sift'
+
   fundle plugin 'edc/bass'
-  fundle plugin 'combro2k/theme-combro2k'
 
   fundle init
 end
