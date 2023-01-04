@@ -20,8 +20,7 @@
     ~/.local/bin/git-cleanup.sh: bin/git-cleanup.sh
     ~/.local/bin/quake_tmux.sh: bin/quake_tmux.sh
     ~/.local/bin/rfkill-toggle.sh: bin/rfkill-toggle.sh
-    ~/.config/autostart/kanshi.desktop: autostart/kanshi.desktop
-    ~/.config/autostart/swayrd.desktop: autostart/swayrd.desktop
+    ~/.local/bin/grim_screenshot.sh: bin/grim_screenshot.sh
     ~/.config/awesome: awesome
     ~/.config/base16-universal-manager/config.yaml: base16-universal-manager/config.yaml
     ~/.config/fish/completions/base16-universal-manager.fish: fish/completions/base16-universal-manager.fish
@@ -34,13 +33,24 @@
     ~/.config/sway/config: sway/config
     ~/.config/waybar/config: waybar/config
     ~/.config/qutebrowser/config.py: qutebrowser/config.py
+    ~/.config/systemd/user/gnome-session-manager@sway-gnome.service: systemd/user/gnome-session-manager@sway-gnome.service
+    ~/.config/systemd/user/kanshi.service: systemd/user/kanshi.service
+    ~/.config/systemd/user/mako.service: systemd/user/mako.service
+    ~/.config/systemd/user/polkit-gnome.service: systemd/user/polkit-gnome.service
     ~/.config/systemd/user/sway-session.target: systemd/user/sway-session.target
+    ~/.config/systemd/user/sway.service: systemd/user/sway.service
+    ~/.config/systemd/user/swaybg.service: systemd/user/swaybg.service
+    ~/.config/systemd/user/swayidle.service: systemd/user/swayidle.service
     ~/.config/systemd/user/swaylock.service: systemd/user/swaylock.service
+    ~/.config/systemd/user/swayrd.service: systemd/user/swayrd.service
+    ~/.config/systemd/user/systemd-lock-handler.service: systemd/user/systemd-lock-handler.service
+    ~/.config/systemd/user/waybar.service: systemd/user/waybar.service
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
     ~/.vimrc: vim/vimrc
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/plugins/tpm: tmux/tpm
     ~/.local/share/applications/thunderbird.desktop: x11/thunderbird.desktop
+    ~/.local/share/applications/bitwarden.desktop: x11/bitwarden.desktop
 
 - asdf:
     - plugin: python
@@ -63,4 +73,13 @@
   - [git submodule update --init --recursive, Installing submodules]
   - [test -x ~/bin/base16-universal-manager && ~/bin/base16-universal-manager, Executing Base16 universal manager]
   - [test -x ~/.local/bin/git-cleanup.sh && git config --global alias.cleanup '!~/.local/bin/git-cleanup.sh', Setting git cleanup alias]
-  - [test ! -L ~/.config/systemd/user/lock.target.wants/swaydle.service && systemctl --user enable swayidle, Setup Lock Mechanism]
+  - [test -f ~/.config/sway/env || touch ~/.config/sway/env, Creating empty sway env file if it does not exist]
+#  - [systemctl --user enable gnome-session-manager@sway-gnome.service, Enabling and starting gnome-session-manager@sway-gnome.service service]
+  - [systemctl --user enable polkit-gnome.service, Enabling and starting polkit-gnome service]
+  - [systemctl --user enable kanshi.service, Enabling and starting kanshi service]
+  - [systemctl --user enable mako.service, Enabling and starting mako service]
+  - [systemctl --user enable swaybg.service, Enabling and starting swaybg service]
+  - [systemctl --user enable swayidle.service, Enabling and starting swayidle service]
+  - [systemctl --user enable swayrd.service, Enabling and starting swayrd service]
+  - [systemctl --user enable systemd-lock-handler.service, Enabling and starting systemd-lock-handler service]
+  - [systemctl --user enable waybar.service, Enabling and starting wayibar service]

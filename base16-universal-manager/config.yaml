@@ -88,12 +88,6 @@ applications:
       default:
         path: ~/.config/waybar/style.css
         mode: rewrite
-  i3status-rust:
-    enabled: true
-    files:
-      default:
-        path: ~/.config/i3status-rust/theme.toml
-        mode: rewrite
   wofi:
     enabled: true
     files:

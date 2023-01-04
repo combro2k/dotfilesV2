@@ -10,6 +10,8 @@
     "clock": {
       "timezone": "Europe/Amsterdam",
       "format": "{:%Y-%m-%d - %I:%M %p}",
+      "tooltip": true,
+      "tooltip-format": "{:%Y %B}\n{calendar}",
     },
     "sway/mode": {
       "format": "",

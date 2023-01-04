@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bitwarden
+StartupWMClass=bitwarden
+Comment=Bitwarden is an integrated open source password management solution for individuals, teams, and business organizations.
+Exec="bin/Bitwarden" %u
+Version=1.0
+Type=Application
+Categories=Office;
+Terminal=false
+StartupNotify=true

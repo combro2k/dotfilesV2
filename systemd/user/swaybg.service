@@ -4,8 +4,8 @@ Documentation=man:swayidle(1)
 PartOf=graphical-session.target
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/swayidle -w timeout 300 'swaylock -f -c 000000' before-sleep 'swaylock -f -c 000000'
+Type=oneshot
+ExecStart=/bin/sh -c 'swaymsg output \* bg $(gsettings get org.gnome.desktop.background picture-uri | cut -c 9- | rev | cut -c 2- | rev) fill'
 
 [Install]
 WantedBy=sway-session.target

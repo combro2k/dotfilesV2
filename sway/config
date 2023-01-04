@@ -57,6 +57,18 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+    input type:touchpad {
+        events disabled
+    }
+    input "2:10:TPPS/2_Elan_TrackPoint" {
+        events disabled
+    }
+    input "6058:20564:ThinkPad_Extra_Buttons" {
+        events disabled
+    }
+    input "4176:1031:Yubico_YubiKey_OTP+FIDO+CCID" {
+        events disabled
+    }
 
 ### Key bindings
 #
@@ -166,7 +178,9 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
     bindsym $mod+e exec nautilus .
     bindsym $mod+space exec wofi --term $term --show drun --modi drun --allow-images
     bindsym $mod+l exec swaylock -f --color 000000 --layout-text-color ffffff --text-color ffffff
-    bindsym alt+tab exec bin/swayr switch-to
+    bindsym alt+tab exec /usr/bin/swayr switch-to
+
+    bindsym $mod+h exec clipman pick -t wofi
 
 #
 # Scratchpad:
@@ -194,6 +208,13 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
       scratchpad show
     }
     bindsym F9 exec swaymsg '[class="1Password"]' scratchpad show || /snap/bin/1password
+
+    # Bitwarden
+    for_window [class="Bitwarden"] {
+      move scratchpad
+      scratchpad show
+    }
+    bindsym F8 exec swaymsg '[class="Bitwarden"]' scratchpad show || bin/Bitwarden
 
     # authy
     for_window [class="Authy Desktop"] {
@@ -242,7 +263,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-output "*" bg ~/.wallpaper fill
+bindsym $mod+Print exec .local/bin/grim_screenshot.sh region
+bindsym Alt+Print exec .local/bin/grim_screenshot.sh focused
+bindsym Print exec .local/bin/grim_screenshot.sh monitor
+
+bindsym Shift+$mod+Print exec .local/bin/grim_screenshot.sh region_clipboard
+bindsym Shift+Alt+Print exec .local/bin/grim_screenshot.sh focused_clipboard
+bindsym Shift+Print exec .local/bin/grim_screenshot.sh monitor_clipboard
 
 #
 # Status Bar:
@@ -253,16 +280,23 @@ output "*" bg ~/.wallpaper fill
 #  swaybar_command waybar
 #}
 
+
+# Desktop portal
+exec /usr/libexec/xdg-desktop-portal -r
+
+exec_always systemctl --user start swaybg
+
 #
 # Start Systemd session target
 # https://github.com/swaywm/sway/wiki/Systemd-integration
 #
-exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; systemctl --user start sway-session.target"
+exec sh -c 'systemctl --user import-environment; systemctl --user start sway-session.target'
 
 #
 # Autostart
 #
 exec /usr/bin/dex -a -s /etc/xdg/autostart/:~/.config/autostart/ --environment sway
+exec wl-paste -t text --watch clipman store --no-persist
 
 include /etc/sway/config.d/*
 
