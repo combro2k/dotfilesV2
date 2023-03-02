@@ -51,6 +51,7 @@
     ~/.tmux/plugins/tpm: tmux/tpm
     ~/.local/share/applications/thunderbird.desktop: x11/thunderbird.desktop
     ~/.local/share/applications/bitwarden.desktop: x11/bitwarden.desktop
+    ~/.local/share/applications/notesnook.desktop: x11/notesnook.desktop
 
 - asdf:
     - plugin: python

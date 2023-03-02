@@ -153,7 +153,7 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    # bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
     # bindsym $mod+space focus mode_toggle
@@ -202,12 +202,13 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
     }
     bindsym --locked XF86Tools exec swaymsg '[class="Spotify"]' scratchpad show || spotify
 
-    # 1password
-    for_window [class="1Password"] {
+    # Brave
+    for_window [class="Brave-browser-nightly"] {
       move scratchpad
       scratchpad show
     }
-    bindsym F9 exec swaymsg '[class="1Password"]' scratchpad show || /snap/bin/1password
+    bindsym F7 exec swaymsg '[class="Brave-browser-nightly"]' scratchpad show || /opt/brave.com/brave-nightly/brave
+
 
     # Bitwarden
     for_window [class="Bitwarden"] {
@@ -215,6 +216,13 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
       scratchpad show
     }
     bindsym F8 exec swaymsg '[class="Bitwarden"]' scratchpad show || bin/Bitwarden
+
+    # 1password
+    for_window [class="1Password"] {
+      move scratchpad
+      scratchpad show
+    }
+    bindsym F9 exec swaymsg '[class="1Password"]' scratchpad show || /snap/bin/1password
 
     # authy
     for_window [class="Authy Desktop"] {
@@ -235,7 +243,8 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
       move scratchpad
       scratchpad show
     }
-    bindsym F12 exec swaymsg '[app_id="QuakeDD"]' scratchpad show || $term --class "QuakeDD" --detach -e ".local/bin/quake_tmux.sh"
+    bindsym F12 exec swaymsg '[app_id="QuakeDD"]' scratchpad show || $term --class "QuakeDD" --detach 
+    #-e ".local/bin/quake_tmux.sh"
 
 
 #

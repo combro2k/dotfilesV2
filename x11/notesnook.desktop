@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=notesnook
+StartupWMClass=notesnook
+Comment=Open source zero knowledge private note taking
+Exec="bin/Notesnook" %u
+Version=1.0
+Type=Application
+Categories=Office;
+Terminal=false
+StartupNotify=true
