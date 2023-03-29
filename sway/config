@@ -202,13 +202,19 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
     }
     bindsym --locked XF86Tools exec swaymsg '[class="Spotify"]' scratchpad show || spotify
 
+    # Notesnook
+    for_window [class="Notesnook"] {
+      move scratchpad
+      scratchpad show
+    }
+    bindsym F6 exec swaymsg '[class="Notesnook"]' scratchpad show || bin/Notesnook
+
     # Brave
     for_window [class="Brave-browser-nightly"] {
       move scratchpad
       scratchpad show
     }
-    bindsym F7 exec swaymsg '[class="Brave-browser-nightly"]' scratchpad show || /opt/brave.com/brave-nightly/brave
-
+    bindsym F7 exec swaymsg '[class="Brave-browser-nightly"]' scratchpad show || /opt/brave.com/brave-nightly/brave-browser
 
     # Bitwarden
     for_window [class="Bitwarden"] {
@@ -243,7 +249,7 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
       move scratchpad
       scratchpad show
     }
-    bindsym F12 exec swaymsg '[app_id="QuakeDD"]' scratchpad show || $term --class "QuakeDD" --detach 
+    bindsym F12 exec swaymsg '[app_id="QuakeDD"]' scratchpad show || $term --class "QuakeDD" --detach
     #-e ".local/bin/quake_tmux.sh"
 
 
@@ -291,6 +297,7 @@ bindsym Shift+Print exec .local/bin/grim_screenshot.sh monitor_clipboard
 
 
 # Desktop portal
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec /usr/libexec/xdg-desktop-portal -r
 
 exec_always systemctl --user start swaybg

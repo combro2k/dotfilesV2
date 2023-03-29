@@ -21,6 +21,7 @@
     ~/.local/bin/quake_tmux.sh: bin/quake_tmux.sh
     ~/.local/bin/rfkill-toggle.sh: bin/rfkill-toggle.sh
     ~/.local/bin/grim_screenshot.sh: bin/grim_screenshot.sh
+    ~/.local/bin/wlprop.sh: bin/wlprop.sh
     ~/.config/awesome: awesome
     ~/.config/base16-universal-manager/config.yaml: base16-universal-manager/config.yaml
     ~/.config/fish/completions/base16-universal-manager.fish: fish/completions/base16-universal-manager.fish
@@ -77,7 +78,7 @@
   - [test -f ~/.config/sway/env || touch ~/.config/sway/env, Creating empty sway env file if it does not exist]
 #  - [systemctl --user enable gnome-session-manager@sway-gnome.service, Enabling and starting gnome-session-manager@sway-gnome.service service]
   - [systemctl --user enable polkit-gnome.service, Enabling and starting polkit-gnome service]
-  - [systemctl --user enable kanshi.service, Enabling and starting kanshi service]
+#  - [systemctl --user enable kanshi.service, Enabling and starting kanshi service]
   - [systemctl --user enable mako.service, Enabling and starting mako service]
   - [systemctl --user enable swaybg.service, Enabling and starting swaybg service]
   - [systemctl --user enable swayidle.service, Enabling and starting swayidle service]
