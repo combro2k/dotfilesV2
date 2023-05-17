@@ -62,7 +62,7 @@ applications:
     hook: swaymsg reload
     files:
       colors:
-        path: ~/.config/sway/theme.conf
+        path: ~/.config/sway/config.d/theme.conf
         mode: rewrite
   tmux:
     enabled: true
@@ -87,12 +87,6 @@ applications:
     files:
       default:
         path: ~/.config/waybar/style.css
-        mode: rewrite
-  wofi:
-    enabled: true
-    files:
-      default:
-        path: ~/.config/wofi/style.css
         mode: rewrite
   xresources:
     enabled: true
