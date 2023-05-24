@@ -5,7 +5,7 @@ if status --is-interactive
 
   # Fish git prompt
   set fish_prompt_pwd_dir_length 0
-  set -g theme_nerd_fonts yes
+  #set -g theme_nerd_fonts yes
 
   # Use FZF new keybindings
   set -x FZF_LEGACY_KEYBINDINGS 0
