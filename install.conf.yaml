@@ -16,6 +16,7 @@
 - link:
     ~/.bashrc: bash/bashrc
     ~/.local/bin/git-cleanup.sh: bin/git-cleanup.sh
+    ~/.local/bin/git-base-on-master.sh: bin/git-base-on-master.sh
     ~/.config/base16-universal-manager/config.yaml: base16-universal-manager/config.yaml
     ~/.config/fish/completions/base16-universal-manager.fish: fish/completions/base16-universal-manager.fish
     ~/.config/fish/completions/glab.fish: fish/completions/glab.fish
