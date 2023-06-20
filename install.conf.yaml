@@ -24,10 +24,14 @@
     ~/.config/fish/conf.d: fish/conf.d
     ~/.config/kanshi/config: kanshi/config
     ~/.config/kitty/kitty.conf: kitty/kitty.conf
+    ~/.config/nwg-bar/bar.json: nwg-bar/bar.json
+    ~/.config/nwg-bar/style.css: nwg-bar/style.css
     ~/.config/sway/config.d/scratchpads.conf: sway/scratchpads.conf
     ~/.config/sway/config.d/keys.conf: sway/keys.conf
     ~/.config/sway/variables.d/term.conf: sway/term.conf
     ~/.config/sway/variables.d/idle.conf: sway/idle.conf
+    ~/.config/swaylock/lock.sh: swaylock/sway-lock.sh
+    ~/.config/swaylock/config: swaylock/config
     ~/.config/waybar/config.jsonc: waybar/config.jsonc
     ~/.config/waybar/style.css: waybar/style.css
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
