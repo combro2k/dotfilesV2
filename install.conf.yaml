@@ -28,6 +28,7 @@
     ~/.config/nwg-bar/style.css: nwg-bar/style.css
     ~/.config/sway/config.d/scratchpads.conf: sway/scratchpads.conf
     ~/.config/sway/config.d/keys.conf: sway/keys.conf
+    ~/.config/sway/config.d/windows.conf: sway/windows.conf
     ~/.config/sway/variables.d/term.conf: sway/term.conf
     ~/.config/sway/variables.d/idle.conf: sway/idle.conf
     ~/.config/swaylock/lock.sh: swaylock/sway-lock.sh
