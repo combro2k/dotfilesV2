@@ -43,19 +43,13 @@
 - asdf:
     - plugin: python
     - plugin: golang
-      global: latest
-      versions: [latest]
     - plugin: devspace
     - plugin: tmux
     - plugin: vim
-      global: latest
-      versions: [latest]
     - plugin: glab
-      global: latest
-      versions: [latest]
     - plugin: github-cli
-      global: latest
-      versions: [latest]
+    - plugin: talosctl
+    - plugin: kubectl
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
