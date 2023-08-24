@@ -50,6 +50,7 @@
     - plugin: github-cli
     - plugin: talosctl
     - plugin: kubectl
+    - plugin: krew
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
