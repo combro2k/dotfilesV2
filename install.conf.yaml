@@ -51,6 +51,7 @@
     - plugin: talosctl
     - plugin: kubectl
     - plugin: krew
+    - plugin: ripgrep
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
