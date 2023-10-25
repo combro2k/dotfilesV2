@@ -26,6 +26,8 @@ if status --is-interactive
   fundle plugin 'tuvistavie/fish-completion-helpers'
   fundle plugin 'tuvistavie/fish-asdf'
 
+  fundle plugin 'sentriz/fish-pipenv'
+
   fundle plugin 'combro2k/fish-fzf'
   fundle plugin 'combro2k/fish-sift'
 
